@@ -1,0 +1,58 @@
+
+		<h2>Virement</h2>
+		
+		<form class="form-horizontal">
+
+			<!--Test pour l'animation d'affichage du message
+			<button ng-click="do()">Do</button>
+			<button ng-click="undo()">Undo</button>-->
+
+			<div class="alert alert-success animate-show" ng-show="validationMsg != ''">
+				<span class="fam-accept"></span>{{validationMsg}}
+			</div>
+			
+			<!-- Du compte -->
+		  <div class="control-group">
+		    <label class="control-label" for="compteOrigine">Du compte</label>
+		    <div class="controls">
+		      <select id="compteOrigine" ng-model="fromAccount"
+		      	ng-options="c.number as c.name for c in comptes"></select>
+		    </div>
+		  </div>
+
+		  <!-- Vers le compte -->
+		  <div class="control-group">
+		    <label class="control-label" for="compteDestination">Vers</label>
+		    <div class="controls">
+		      <select id="compteDestination" ng-model="toAccount"
+		      	ng-options="c.number as c.name for c in comptes"></select>
+		    </div>
+		  </div>
+
+		  <!-- Montant -->
+		  <div class="control-group">
+		    <label class="control-label" for="montant">Montant</label>
+		    <div class="controls">
+		    	<div class="input-append">
+		      	<input type="text" id="montant" class="amount" ng-model="amount" style="width: 179px;">
+		      	<span class="add-on">€</span>
+		      </div>
+		    </div>
+		  </div>
+
+		  <!-- Motif -->
+		  <div class="control-group">
+		    <label class="control-label" for="motif">Motif</label>
+		    <div class="controls">
+		      <input type="text" id="motif" ng-model="comment">
+		    </div>
+		  </div>
+
+		  <!-- Submit -->
+		  <div class="control-group">
+		    <div class="controls">
+		      <input type="submit" value="Valider" class="btn btn-primary" ng-click="doTransfer()" />
+		    </div>
+		  </div>
+		</form>
+	</div>

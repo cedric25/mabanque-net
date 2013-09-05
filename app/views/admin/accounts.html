@@ -1,0 +1,24 @@
+<h2>Comptes</h2>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Numéro</th>
+			<th>Nom</th>
+			<th>Propriétaire</th>
+			<th>Solde</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="compte in comptes">
+			<td>{{compte.number}}</td>
+			<td>{{compte.name}}</td>
+			<td>{{compte.ownerLogin}}</td>
+			<td>{{compte.balance | currency}}</td>
+			<td><a href="#/admin/account/{{compte.number}}">Editer</a> / <a href="#">Supprimer</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<a href="#/admin/account/" class="btn btn-primary">Créer un compte</a>

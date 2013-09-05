@@ -1,0 +1,24 @@
+<span ng-if="comptes.length == 0">
+	Encore aucun compte chez nous ?... <i class="fam-emoticon-unhappy"></i>
+</span>
+
+<div ng-if="comptes.length > 0">
+
+<h2>Comptes</h2>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Solde</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="compte in comptes">
+				<td><a href="#/account/detail/{{compte.number}}">{{compte.name}}</a></td>
+				<td>{{compte.balance | currency}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>

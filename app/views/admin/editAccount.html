@@ -1,0 +1,53 @@
+<h2>{{title}}</h2>
+
+<form class="form-horizontal">
+
+	<div class="alert alert-success animate-show" ng-show="validationMsg != ''">
+		<span class="fam-accept"></span>{{validationMsg}}
+	</div>
+
+	<!-- Numéro -->
+	<div class="control-group">
+		<label class="control-label" for="inputNumber">Numéro</label>
+		<div class="controls">
+			<input type="text" id="inputNumber" placeholder="Numéro" ng-model="compte.number" />
+		</div>
+	</div>
+	
+	<!-- Nom -->
+	<div class="control-group">
+		<label class="control-label" for="inputName">Nom</label>
+		<div class="controls">
+			<input type="text" id="inputName" placeholder="Nom" ng-model="compte.name" />
+		</div>
+	</div>
+	
+	<!-- Propriétaire -->
+	<div class="control-group">
+		<label class="control-label" for="inputOwner">Propriétaire</label>
+		<div class="controls">
+			<input type="text" id="inputOwner" placeholder="Propriétaire"
+				ng-model="compte.ownerLogin" />
+		</div>
+	</div>
+	
+	<!-- Solde -->
+	<div class="control-group">
+		<label class="control-label" for="inputBalance">Solde</label>
+		<div class="controls">
+			<div class="input-append">
+				<input type="text" id="inputBalance" placeholder="Solde"
+					ng-model="compte.balance" class="amount" />
+				<span class="add-on">€</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<div class="controls">
+			<input type="submit" class="btn btn-primary" value="Enregistrer"
+				ng-click="saveAccount()" />
+				<a href="#/admin/accounts" class="btn" style="margin-left:10px;">Retour</a>
+		</div>
+	</div>
+</form>

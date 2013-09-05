@@ -1,0 +1,22 @@
+<h2>Opérations</h2>
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Motif</th>
+			<th>Compte</th>
+			<th>Montant</th>
+			<th>Date</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="op in operations">
+			<td>{{op.reason}}</td>
+			<td>{{op.accountNumber}}</td>
+			<td ng-class="cssClass(op.amount)">{{op.amount | currency}}</td>
+			<td>{{op.date | date:'dd MMM yyyy - HH:mm'}}</td>
+			<td><a href ng-click="seeOperationDetail(op._id)">Editer</a></td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavbartopController">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="brand" href="#">MaBanque.Net</a>
+
+      <!-- Bonjour utilisateur + logout : Uniquement si un utilisateur est connecté -->
+      <div class="nav-collapse collapse" ng-show="isLogged()">
+        <ul class="nav pull-right">
+          <li class="navbar-text">Bienvenue {{getFirstName()}}</li>
+          <li><a href ng-click="logout()" class="navbar-link">Déconnexion</a></li>
+        </ul>
+        <ul class="nav">
+          <li class="active"><a href="#">Accueil</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
