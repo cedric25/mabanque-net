@@ -83,9 +83,15 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/login.js"></script>
+
         <script src="scripts/services/backend.js"></script>
         <script src="scripts/services/frontSession.js"></script>
         <script src="scripts/services/tokenHandler.js"></script>
+        <script src="scripts/services/sessionStorageHandler.js"></script>
+
+        <script src="scripts/interceptors/addTokenToRequestInterceptor.js"></script>
+        <script src="scripts/interceptors/checkAuthWithinResponseInterceptor.js"></script>
+
         <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/transfer.js"></script>
         <script src="scripts/controllers/accountDetail.js"></script>

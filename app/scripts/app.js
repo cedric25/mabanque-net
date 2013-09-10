@@ -3,7 +3,8 @@
 angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
 
   // Ensemble des routes
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
+    
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
@@ -52,9 +53,17 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
       .otherwise({
         redirectTo: '/'
       });
+
+      // Ajout du token de sécurité à toutes les requêtes sortantes
+      $httpProvider.interceptors.push('AddTokenToRequestInterceptor');
+
+      // Vérification de la réponse des requêtes entrantes,
+      // redirection vers la page de login si le serveur renvoie 'authenticated' = false
+      $httpProvider.interceptors.push('CheckAuthWithinResponseInterceptor');
   })
 
-  // Redirection sur la page de login si l'utilisateur n'est pas connecté
+  // Redirection vers la page de login si l'utilisateur n'est pas authentifié
+  // et qu'il essaye d'accéder à une page autre que la page de login
   .run(function ($rootScope, $location) {
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
       if (!$rootScope.isLogged() && next.templateUrl != 'views/login.html') {

@@ -2,12 +2,12 @@
 
 angular.module('banquesqliAngular01App')
 
-  .factory('TokenHandler', function() {
+  .factory('TokenHandler', ['SessionStorageHandler', function(SessionStorageHandler) {
 
     var tokenHandler = {};
-    var token = "none";
+    var token = 'none';
    
-    tokenHandler.set = function( newToken ) {
+    tokenHandler.set = function(newToken) {
       token = newToken;
     };
    
@@ -15,38 +15,17 @@ angular.module('banquesqliAngular01App')
       return token;
     };
 
+    tokenHandler.isSet = function() {
+      return token != null && token !== 'none';
+    };
+
     /*
      * Si F5, on perd le token de ce service fixé au login.
      * On essaye alors de récupérer celui stocké dans la session du navigateur
      */
-    if (tokenHandler.get() == "none") {
-      tokenHandler.set(sessionStorage.getItem('token'));
+    if (tokenHandler.get() == "none" && SessionStorageHandler.isSet('token')) {
+      tokenHandler.set(SessionStorageHandler.get('token'));
     }
    
-    // wrap given actions of a resource to send auth token with every request
-    tokenHandler.wrapActions = function( resource, actions ) {
-      // copy original resource
-      var wrappedResource = resource;
-      for (var i=0; i < actions.length; i++) {
-        tokenWrapper( wrappedResource, actions[i] );
-      };
-      // return modified copy of resource
-      return wrappedResource;
-    };
-   
-    // wraps resource action to send request with auth token
-    var tokenWrapper = function( resource, action ) {
-      // copy original action
-      resource['_' + action]  = resource[action];
-      // create new action wrapping the original and sending token
-      resource[action] = function( data, success, error ) {
-        return resource['_' + action](
-          angular.extend({}, data || {}, {token: tokenHandler.get()}),
-          success,
-          error
-        );
-      };
-    };
-   
     return tokenHandler;
-  });
+  }]);

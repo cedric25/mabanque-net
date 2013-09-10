@@ -17,7 +17,7 @@ angular.module('banquesqliAngular01App')
 				accountNumber: $scope.operation.accountNumber
 			});
 
-			operation.$update();
+			operation.$update({'id': $scope.operation._id});
 
 			$scope.validationMsg = 'Opération sauvegardée';
 		};

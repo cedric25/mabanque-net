@@ -1,14 +1,13 @@
 'use strict';
 
 angular.module('banquesqliAngular01App')
-  .controller('LoginCtrl', function ($scope, $rootScope, Login, $location) {
+  .controller('LoginCtrl', function ($scope, $rootScope, Login, $location, FrontSession) {
 
     // Données du formulaire
   	$scope.login = '1234';
   	$scope.password = 'password';
 
-  	$scope.error = '';
-    $scope.hasError = false;
+  	$scope.error = FrontSession.getMessageForLoginForm();
     
   	$scope.doLogin = function() {
   		var loginResponse = Login.login(
@@ -21,13 +20,11 @@ angular.module('banquesqliAngular01App')
   					redirectToHome();
   				}
   				else {
-            $scope.hasError = true;
 						$scope.error = 'Login ou mot de passe incorrect';
 					}
   			},
   			// Error
   			function(httpResponse) {
-          $scope.hasError = true;
 					$scope.error = 'Erreur réseau';
   			});
   	};

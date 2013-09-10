@@ -30,14 +30,14 @@ angular.module('banquesqliAngular01App')
 				password: $scope.user.password,
 				firstName: $scope.user.firstName,
 				lastName: $scope.user.lastName,
-				admin: $scope.user.admin
+				admin: $scope.user.admin == true ? true : false
 			});
 
 			if (isCreation) {
 				user.$save();
 			}
 			else {
-				user.$update();
+				user.$update({'id': $scope.user._id});
 			}
 
 			$scope.validationMsg = 'Utilisateur sauvegardé';

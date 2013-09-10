@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('banquesqliAngular01App')
-  .controller('TransferCtrl', function ($scope, $rootScope, AccountsUser, Operations, Accounts, $location, AccountsNumber) {
+  .controller('TransferCtrl',
+  	['$scope', '$rootScope', 'AccountsUser', 'Operations', 'Accounts', 'AccountsNumber', 'FrontSession',
+  	function ($scope, $rootScope, AccountsUser, Operations, Accounts, AccountsNumber, FrontSession) {
 
   	// Données du formulaire
   	$scope.fromAccount = '';
@@ -94,8 +96,11 @@ angular.module('banquesqliAngular01App')
 					var newBalance = compteTo.balance + $scope.amount;
 					saveNewBalanceForAccount(compteTo._id, newBalance);
 				});
-			
-			$scope.validationMsg = 'Virement effectué';
+
+			// TODO: Ne faire ça que lorsque que toutes les requêtes sont terminées
+			// $q.all ... > http://stackoverflow.com/questions/15299850/angularjs-wait-for-multiple-resource-queries-to-complete
+			FrontSession.setMessageToConsume('Virement effectué');
+			$rootScope.redirectToHome();
 		};
 
 		var saveNewBalanceForAccount = function(idAccount, newBalance) {
@@ -105,4 +110,4 @@ angular.module('banquesqliAngular01App')
 			compteToSave.$update({id: idAccount});
 		};
 		
-  });
+  }]);

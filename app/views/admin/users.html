@@ -1,5 +1,9 @@
 <h2>Utilisateurs</h2>
 
+<div class="alert alert-success animate-show" ng-show="validationMsg != ''">
+	<span class="fam-accept"></span>{{validationMsg}}
+</div>
+
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
@@ -12,7 +16,10 @@
 		<tr ng-repeat="user in users">
 			<td>{{user.firstName}}</td>
 			<td>{{user.lastName}}</td>
-			<td><a href="#/admin/user/{{user.login}}">Editer</a> / <a href="#">Supprimer</a></td>
+			<td>
+				<a href="#/admin/user/{{user.login}}">Editer</a> /
+				<a href ng-click="deleteUser(user)">Supprimer</a>
+			</td>
 		</tr>
 	</tbody>
 </table>

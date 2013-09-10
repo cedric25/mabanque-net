@@ -36,7 +36,7 @@ angular.module('banquesqliAngular01App')
 				compte.$save();
 			}
 			else {
-				compte.$update();
+				compte.$update({'id': $scope.compte._id});
 			}
 
 			$scope.validationMsg = 'Compte sauvegardé';

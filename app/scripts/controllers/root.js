@@ -93,4 +93,9 @@ angular.module('banquesqliAngular01App')
 			$location.path('/login');
 		};
 
+    /** Redirection vers la home */
+    $rootScope.redirectToHome = function() {
+      $location.path('/');
+    };
+
   });
