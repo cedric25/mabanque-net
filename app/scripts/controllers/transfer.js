@@ -2,8 +2,8 @@
 
 angular.module('banquesqliAngular01App')
   .controller('TransferCtrl',
-  	['$scope', '$rootScope', 'AccountsUser', 'Operations', 'Accounts', 'AccountsNumber', 'FrontSession',
-  	function ($scope, $rootScope, AccountsUser, Operations, Accounts, AccountsNumber, FrontSession) {
+  	['$scope', '$rootScope', 'AccountsUser', 'Operations', 'Accounts', 'AccountsNumber', 'FrontSession', '$q',
+  	function ($scope, $rootScope, AccountsUser, Operations, Accounts, AccountsNumber, FrontSession, $q) {
 
   	// Données du formulaire
   	$scope.fromAccount = '';
@@ -14,12 +14,12 @@ angular.module('banquesqliAngular01App')
 		$scope.validationMsg = '';
 
 		/* Tests de l'animation */
-		$scope.do = function() {
+		/*$scope.do = function() {
 			$scope.validationMsg = 'message';
 		}
 		$scope.undo = function() {
 			$scope.validationMsg = '';
-		}
+		}*/
 		
 		/**
 		 * Liste des comptes bancaires de l'utilisateur
@@ -59,55 +59,77 @@ angular.module('banquesqliAngular01App')
 			$scope.amount = parseFloat($scope.amount);
 			$scope.comment = ($scope.comment !== '') ? $scope.comment : '(sans motif)';
 			
-			// --- 1) 'Moins' dans le premier compte
-			
-			// Sauvegarde de l'opération
+			// Opération 'Moins' dans le premier compte
 			var operationMoins = new Operations({
 				accountNumber: $scope.fromAccount,
 				amount: -$scope.amount,
 				reason: $scope.comment,
 				date: new Date().getTime()
 			});
-			operationMoins.$save();
 			
-			// Récupération et mise à jour du solde du compte 'From'
-			var compteFrom = AccountsNumber.get(
-				{number: $scope.fromAccount},
-				function(value, responseHeaders) {
-					var newBalance = compteFrom.balance - $scope.amount;
-					saveNewBalanceForAccount(compteFrom._id, newBalance);
-				});
-			
-			// --- 2) 'Plus' pour le second compte + recalcul du solde
-
-			// Sauvegarde de l'opération
+			// Opération 'Plus' dans le premier compte
 			var operationPlus = new Operations({
 				accountNumber: $scope.toAccount,
 				amount: $scope.amount,
 				reason: $scope.comment,
 				date: new Date().getTime()
 			});
-			operationPlus.$save();
-			
-			// Récupération et mise à jour du solde du compte 'To'
-			var compteTo = AccountsNumber.get(
-				{number: $scope.toAccount},
-				function(value, responseHeaders) {
-					var newBalance = compteTo.balance + $scope.amount;
-					saveNewBalanceForAccount(compteTo._id, newBalance);
-				});
 
-			// TODO: Ne faire ça que lorsque que toutes les requêtes sont terminées
-			// $q.all ... > http://stackoverflow.com/questions/15299850/angularjs-wait-for-multiple-resource-queries-to-complete
-			FrontSession.setMessageToConsume('Virement effectué');
-			$rootScope.redirectToHome();
+			$q.all([
+
+				// Opération 'Moins' dans le premier compte
+				saveOperation(operationMoins),
+
+				// Récupération et mise à jour du solde du compte 'From'
+				updateBalance($scope.fromAccount, 'compteFrom'),
+
+				// Opération 'Plus' dans le premier compte
+				saveOperation(operationPlus),
+
+				// Récupération et mise à jour du solde du compte 'To'
+				updateBalance($scope.toAccount, 'compteTo'),
+
+			]).then(function(data) {
+
+				// Quand tout est fini, redirection vers la liste des comptes
+				FrontSession.setMessageToConsume('Virement effectué');
+				$rootScope.redirectToHome();
+
+			});
 		};
 
-		var saveNewBalanceForAccount = function(idAccount, newBalance) {
+		var saveOperation = function(operation) {
+			var d = $q.defer();
+			var result = operation.$save({}, function() {
+				d.resolve(result);
+			});
+			return d.promise;
+		};
+
+		var updateBalance = function(accountNumber, whichAccount) {
+			var d = $q.defer();
+			var compte = AccountsNumber.get(
+				{number: accountNumber},
+				function(value, responseHeaders) {
+					var newBalance = 0;
+					if (whichAccount === 'compteFrom') {
+						newBalance = compte.balance - $scope.amount;
+					}
+					else if (whichAccount === 'compteTo') {
+						newBalance = compte.balance + $scope.amount;
+					}
+					saveNewBalanceForAccount(compte._id, newBalance, d);
+				});
+			return d.promise;
+		};
+
+		var saveNewBalanceForAccount = function(idAccount, newBalance, d) {
 			var compteToSave = new Accounts({
 				balance: newBalance
 			});
-			compteToSave.$update({id: idAccount});
+			var result = compteToSave.$update({id: idAccount}, function() {
+				d.resolve(result);
+			});
 		};
 		
   }]);
