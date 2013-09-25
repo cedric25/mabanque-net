@@ -1,0 +1,17 @@
+{
+  "name": "banquesqliAngular01",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.0-rc.1",
+    "json3": "~3.2.4",
+    "jquery": "2.0.3",
+    "bootstrap-sass": "~2.3.1",
+    "es5-shim": "~2.0.8",
+    "angular-resource": "1.2.0-rc.1",
+    "angular-route": "1.2.0-rc.1",
+    "angular-animate": "1.2.0-rc.1"
+  },
+  "resolutions": {
+    "angular": "1.2.0-rc.1"
+  }
+}

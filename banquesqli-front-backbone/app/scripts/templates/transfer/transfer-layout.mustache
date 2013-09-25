@@ -1,0 +1,38 @@
+<h1>Transfert</h1>
+<form class="form-horizontal" data-validate="parsley">
+    <div class="control-group">
+        <label class="control-label" for="reason">Motif</label>
+        <div class="controls">
+            <input type="text" id="reason" placeholder="Motif"
+                   data-required="true"
+                   data-error-message="Veuillez donnez un motif"
+                   data-notblank="true">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="amount">Montant</label>
+        <div class="controls">
+            <input type="number" id="amount" placeholder="Montant" min="1"
+                   data-required="true"
+                   data-error-message="Veuillez entrer un montant valide"
+                   data-notblank="true">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="fromAccount">Du compte</label>
+        <div class="controls" id="selectFromAccount">
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="toAccount">Vers</label>
+        <div class="controls" id="selectToAccount">
+
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Effectuer le transfert</button>
+        </div>
+    </div>
+</form>

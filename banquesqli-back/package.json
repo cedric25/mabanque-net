@@ -1,0 +1,16 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.3.1",
+    "jade": "*",
+    "mongoose": "~3.6.14",
+    "socket.io": "~0.9.16",
+    "node-uuid": "~1.4.0",
+    "crypto": "0.0.3"
+  }
+}

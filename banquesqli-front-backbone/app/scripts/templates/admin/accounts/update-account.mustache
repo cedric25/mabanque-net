@@ -1,0 +1,40 @@
+<div class="control-group">
+    <label class="control-label" for="inputNumber">Numéro</label>
+    <div class="controls">
+        <input type="number" id="inputNumber" placeholder=""
+               disabled
+               data-required="true"
+               data-notblank="true"
+               data-error-message="Veuillez entrer un numéro valide">
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="inputName">Nom</label>
+    <div class="controls">
+        <input type="text" id="inputName" placeholder="Nom"
+               data-required="true"
+               data-validation-minlength="4"
+               data-error-message="Veuillez entrer un nom valide">
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="inputUser">Utilisateur</label>
+    <div class="controls" id="userSelect">
+
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="inputBalance">Solde initial</label>
+    <div class="controls">
+        <input type="number" id="inputBalance" placeholder="0"
+               data-required="true"
+               data-notblank="true"
+               data-error-message="Veuillez entrer un solde initial valide">
+    </div>
+</div>
+<div class="control-group">
+    <div class="controls">
+        <button class="btn btn-primary">Enregistrer</button>
+        <button class="btn backToPrevious">Retour</button>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "name": "banquesqli",
+  "version": "0.0.0",
+  "dependencies": {
+    "sass-bootstrap": "~2.3.0",
+    "jquery": "~1.9.0",
+    "requirejs": "~2.1.5",
+    "requirejs-text": "~2.0.7",
+    "backbone-amd": "~1.0.0",
+    "underscore-amd": "~1.4.4",
+    "modernizr": "~2.6.2",
+    "mustache": "~0.7.2",
+    "backbone.marionette": "~1.0.3",
+    "parsleyjs": "~1.1.16",
+    "bootbox": "~3.3.0",
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2",
+    "sinonjs": "~1.7.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2",
+    "sinonjs": "~1.7.1"
+  }
+}
