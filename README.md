@@ -16,26 +16,31 @@ Cette application 'front' s'appuie sur un backend Node.js qui expose des web-ser
 
 ## Installation
 
-    git clone git@github.com:cedric25/mabanque-net.git
-    cd mabanque-net
+    git clone https://github.com/cedric25/mabanque-net.git
+
+### Initialisation de la base de données
+
+Les fichiers de données MongoDB se trouvent dans banquesqli-back/dump/bank
+Au démarrage, deux utilisateurs sont définis :
+  '12345' / 'password' : utilisateur
+  '1234' / 'password'  : administrateur
     
-### Partie serveur
+### Partie serveur - banquesqli-back/
 
-    cd banquesqli-back
     npm install
 
-### Front backbone
+### Front backbone - banquesqli-front-backbone/
 
-    cd banquesqli-front-backbone
     npm install
     bower install
 
-### Front angular
+### Front angular - banquesqli-front-angular/
 
-    cd banquesqli-front-angular
     npm install
     bower install
 
-## Démarrage
+## Démarrage (Windows)
 
-Des scripts de lancement sont présents dans le répertoire scripts/
+Dans le répertoire scripts/ modifier '01-startMongo.cmd' pour pointer vers un répertoire correct de données Mongo.
+
+Exécuter ensuite les scripts dans l'ordre indiqué.
