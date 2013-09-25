@@ -21,8 +21,11 @@ Cette application 'front' s'appuie sur un backend Node.js qui expose des web-ser
 ### Initialisation de la base de données
 
 Les fichiers de données MongoDB se trouvent dans banquesqli-back/dump/bank
+
 Au démarrage, deux utilisateurs sont définis :
+
   '12345' / 'password' : utilisateur
+
   '1234' / 'password'  : administrateur
     
 ### Partie serveur - banquesqli-back/
@@ -41,6 +44,6 @@ Au démarrage, deux utilisateurs sont définis :
 
 ## Démarrage (Windows)
 
-Dans le répertoire scripts/ modifier '01-startMongo.cmd' pour pointer vers un répertoire correct de données Mongo.
+Dans le répertoire scripts/, modifier '01-startMongo.cmd' pour pointer vers un répertoire correct de données Mongo.
 
 Exécuter ensuite les scripts dans l'ordre indiqué.
