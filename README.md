@@ -18,22 +18,22 @@ Cette application 'front' s'appuie sur un backend Node.js qui expose des web-ser
 
     git clone git@github.com:cedric25/mabanque-net.git
     cd mabanque-net
-		
+    
 ### Partie serveur
 
-		cd banquesqli-back
+    cd banquesqli-back
     npm install
 
 ### Front backbone
 
-		cd banquesqli-front-backbone
-		npm install
+    cd banquesqli-front-backbone
+    npm install
     bower install
 
 ### Front angular
 
-		cd banquesqli-front-angular
-		npm install
+    cd banquesqli-front-angular
+    npm install
     bower install
 
 ## Démarrage
