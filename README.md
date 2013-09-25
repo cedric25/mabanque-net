@@ -1,10 +1,11 @@
 # mabanque-net
 
-MaBanque.net - Gestion de comptes bancaires en angularjs
+MaBanque.net - Gestion de comptes bancaires
 
-## Prérequis
-
-Cette application 'front' s'appuie sur un backend Node.js qui expose des web-services REST.
+Le repo comprend :
+* Un serveur en node.js qui dialogue avec un MongoDB (développé par Matthis Duclos)
+* Un front en Backbone.js (développé par Matthis Duclos)
+* Un front en AngularJS
 
 ## Fonctionnalités
 
