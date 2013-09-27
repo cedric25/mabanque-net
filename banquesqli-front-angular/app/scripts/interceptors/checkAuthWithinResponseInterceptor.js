@@ -5,10 +5,11 @@
  * (Intercepteur enregistré dans app.js)
  */
 angular.module('banquesqliAngular01App')
-	.factory('CheckAuthWithinResponseInterceptor', function ($rootScope, FrontSession, $q) {
+	.factory('CheckAuthWithinResponseInterceptor', function ($rootScope, FrontSession, $q, $location) {
 	  return {
 	  		'response': function (response) {
-	          if (typeof response !== 'undefined'
+	          if ($location.$$url != '/login'
+                && typeof response !== 'undefined'
 	          		&& typeof response.data === 'object'
               	&& typeof response.data.authenticated !== 'undefined'
               	&& response.data.authenticated === false) {

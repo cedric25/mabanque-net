@@ -106,3 +106,10 @@ h2 {
 
 /* END Animation */
 
+/* Form validation */
+
+input.ng-invalid.ng-dirty {
+  border: 1px solid #FA787E;
+}
+
+/* END Form validation */

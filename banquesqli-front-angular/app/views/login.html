@@ -11,11 +11,19 @@
 	<i class="fam-emoticon-unhappy"></i> {{error}}
 </div>
 
-<form class="form-signin">
+<!-- novalidate is used to disable browser's native form validation -->
+<form name="loginForm" class="form-signin" novalidate>
+
   <h2 class="form-signin-heading">Connexion</h2>
-  <input type="text" class="input-block-level" placeholder="Login" ng-model="login">
-  <input type="password" class="input-block-level" placeholder="Password" ng-model="password">
+
+  <!-- Login -->
+  <input type="text" class="input-block-level" placeholder="Login" ng-model="user.login" required>
+
+  <!-- Mot de passe -->
+  <input type="password" class="input-block-level" placeholder="Password" ng-model="user.password" required>
+
   <div style="text-align:center;">
-  	<button class="btn btn-primary" ng-click="doLogin()">Go !</button>
+  	<button class="btn btn-primary" ng-click="!loginForm.$valid || doLogin()">Go !</button>
   </div>
+
 </form>

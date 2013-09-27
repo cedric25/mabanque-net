@@ -7,15 +7,17 @@ angular.module('banquesqliAngular01App')
   .controller('LoginCtrl', function ($scope, $rootScope, Login, $location, FrontSession) {
 
       // Données du formulaire
-    	$scope.login = '1234';
-    	$scope.password = 'password';
+      $scope.user = {
+        login: '1234',
+        password: 'password'
+      };
 
     	$scope.error = FrontSession.getMessageForLoginForm();
       
     	$scope.doLogin = function() {
-    		var loginResponse = Login.login(
+        var loginResponse = Login.login(
     			// Data
-    			{ login: $scope.login, password: $scope.password },
+    			{ login: $scope.user.login, password: $scope.user.password },
     			// Success
     			function(value, responseHeaders) {
     				if (value.authenticated) {
