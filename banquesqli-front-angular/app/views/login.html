@@ -1,9 +1,5 @@
-<div class="alert alert-success" ng-show="listMsgs.length > 0">
-	<ul>
-		<li ng-repeat="msg in msgs">
-			{{msg}}
-		</li>
-	</ul>
+<div class="alert alert-success" ng-show="message != ''">
+    {{message}}
 </div>
 
 <div class="alert alert-error animate-show" ng-show="error != ''"

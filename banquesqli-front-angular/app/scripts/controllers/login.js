@@ -4,7 +4,9 @@
  * Contrôleur associé à la page de login
  */
 angular.module('banquesqliAngular01App')
-  .controller('LoginCtrl', function ($scope, $rootScope, Login, $location, FrontSession) {
+    .controller('LoginCtrl', function ($scope, $rootScope, Login, $location, FrontSession, Users) {
+        
+      $scope.message = '';
 
       // Données du formulaire
       $scope.user = {
@@ -36,6 +38,6 @@ angular.module('banquesqliAngular01App')
 
     	var redirectToHome = function() {
     		$location.path('/');
-    	};
+        };
 
   });

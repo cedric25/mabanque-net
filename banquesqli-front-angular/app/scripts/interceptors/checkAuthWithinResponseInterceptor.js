@@ -8,11 +8,10 @@ angular.module('banquesqliAngular01App')
 	.factory('CheckAuthWithinResponseInterceptor', function ($rootScope, FrontSession, $q, $location) {
 	  return {
 	  		'response': function (response) {
-	          if ($location.$$url != '/login'
-                && typeof response !== 'undefined'
-	          		&& typeof response.data === 'object'
+	          if (typeof response !== 'undefined'
+	          	&& typeof response.data === 'object'
               	&& typeof response.data.authenticated !== 'undefined'
-              	&& response.data.authenticated === false) {
+                && response.data.authenticated === false) {
               // Redirection vers la page de login
               $rootScope.clearUser();
               $rootScope.redirectToLogin();

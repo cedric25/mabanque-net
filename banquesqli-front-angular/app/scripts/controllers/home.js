@@ -7,6 +7,7 @@ angular.module('banquesqliAngular01App')
   .controller('HomeCtrl', function ($scope, $rootScope, AccountsUser, FrontSession) {
 
   		$scope.validationMsg = '';
+        $scope.total = '';
 
 	  	// On regarde s'il y a un message à afficher
 	  	if (FrontSession.messageToConsume()) {
@@ -15,7 +16,14 @@ angular.module('banquesqliAngular01App')
 
 	  	// Liste des comptes bancaires de l'utilisateur
 	  	$scope.comptes = AccountsUser.query(
-	      {login: $rootScope.getLogin()});
+            {login: $rootScope.getLogin()},
+            function(data) {
+                $scope.total = 0;
+                angular.forEach($scope.comptes, function(value, key) {
+                    $scope.total += value.balance;
+                });
+            }
+        );
 
 	  	$scope.isNotBlank = function() {
 	  		return $scope.validationMsg !== '';

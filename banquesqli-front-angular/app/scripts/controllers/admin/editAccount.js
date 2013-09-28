@@ -40,8 +40,12 @@ angular.module('banquesqliAngular01App')
 				compte.$save({}, function() { $scope.validationMsg = 'Compte créé'; });
 			}
 			else {
-				compte.$update({'id': $scope.compte._id}, function() { $scope.validationMsg = 'Compte sauvegardé'; });
+				compte.$update({'id': $scope.compte._id}, function() {
+                    $scope.validationMsg = 'Compte sauvegardé';
+                });
 			}
+            
+            $scope.compte = {};
 		};
 
   });

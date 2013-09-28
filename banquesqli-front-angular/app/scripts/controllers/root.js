@@ -7,7 +7,22 @@
 angular.module('banquesqliAngular01App')
 
   .controller('RootController',
-  function ($scope, $rootScope, UserLogin, $location, AccountsUser, TokenHandler, SessionStorageHandler) {
+  function ($scope, $rootScope, UserLogin, $location, AccountsUser, TokenHandler, SessionStorageHandler, Notifications) {
+      
+    /* METHODES UTILITAIRES */
+      
+    $rootScope.hasGreenMessage = function() {
+        return Notifications.hasGreenMessage();
+    };
+    $rootScope.getGreenMessage = function() {
+        return Notifications.getGreenMessage();
+    };
+    $rootScope.hasRedMessage = function() {
+        return Notifications.hasRedMessage();
+    };
+    $rootScope.getRedMessage = function() {
+        return Notifications.getRedMessage();
+    };
 
     /** @return true si un utilisateur est connecté (login et token présent en session) */
   	$rootScope.isLogged = function() {
@@ -65,10 +80,10 @@ angular.module('banquesqliAngular01App')
       }
     };
 		
-		/** Redirection vers la page de login */
-		$rootScope.redirectToLogin = function() {
-			$location.path('/login');
-		};
+    /** Redirection vers la page de login */
+    $rootScope.redirectToLogin = function() {
+        $location.path('/login');
+    };
 
     /** Redirection vers la home */
     $rootScope.redirectToHome = function() {

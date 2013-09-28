@@ -5,11 +5,10 @@
  * Contrôleur associé à la création ou à la modification d'un utilisateur
  */
 angular.module('banquesqliAngular01App')
-  .controller('AdminEditUserCtrl', function ($scope, $routeParams, UserLogin, Users) {
+  .controller('AdminEditUserCtrl', function ($scope, $routeParams, UserLogin, Users, Notifications) {
 
   	var userLogin = $routeParams.login;
-		
-		$scope.validationMsg = '';
+      
 		$scope.title = 'Nouvel utilisateur';
 		
 		if (userLogin != null) {
@@ -38,10 +37,28 @@ angular.module('banquesqliAngular01App')
 			});
 
 			if (isCreation) {
-				user.$save({}, function() { $scope.validationMsg = 'Utilisateur créé'; });
+				user.$save({}, function(data) {
+                    if (data[0] === 'O' && data[1] === 'K') {
+                        Notifications.setGreenMessage('Utilisateur créé');
+                    }
+                    else if (typeof data === 'object'
+                             && typeof data.message !== 'undefined') {
+                        Notifications.setRedMessage(data.message);
+                    }
+                    else {
+                        Notifications.setRedMessage('Erreur serveur');
+                    }
+                });
 			}
 			else {
-				user.$update({'id': $scope.user._id}, function() { $scope.validationMsg = 'Utilisateur sauvegardé'; });
+				user.$update({'id': $scope.user._id}, function(data) {
+                    if (typeof data === 'object' && typeof data._id !== 'undefined') {
+                        Notifications.setGreenMessage('Utilisateur sauvegardé');
+                    }
+                    else {
+                        Notifications.setRedMessage('Erreur serveur');
+                    }
+                });
 			}
 		};
 

@@ -26,7 +26,7 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
         controller: 'AccountDetailCtrl'
       })
 
-			// Admin
+      // Admin
       .when('/admin/users', {
         templateUrl: 'views/admin/users.html',
         controller: 'AdminUsersCtrl'
@@ -52,7 +52,7 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
         controller: 'AdminEditOperationCtrl'
       })
 
-			// Default
+      // Default
       .otherwise({
         redirectTo: '/'
       });
@@ -65,12 +65,18 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
       $httpProvider.interceptors.push('CheckAuthWithinResponseInterceptor');
   })
 
-  // Redirection vers la page de login si l'utilisateur n'est pas authentifié
-  // et qu'il essaye d'accéder à une page autre que la page de login
-  .run(function ($rootScope, $location) {
+  .run(function ($rootScope, $location, Notifications) {
+      
+    // A chaque changement de route
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
+        
+      // Redirection vers la page de login si l'utilisateur n'est pas authentifié
+      // et qu'il essaye d'accéder à une page autre que la page de login
       if (!$rootScope.isLogged() && next.templateUrl != 'views/login.html') {
         $location.path('/login');
       }
+        
+      // Remise à vide des notifications
+      Notifications.clear();
     });
   });

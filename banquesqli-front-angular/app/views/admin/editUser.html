@@ -1,16 +1,17 @@
 <h2>{{title}}</h2>
 
-<form class="form-horizontal">
+<div ng-include src="'views/notifications.html'"></div>
 
-	<div class="alert alert-success animate-show" ng-show="validationMsg != ''">
-		<span class="fam-accept"></span>{{validationMsg}}
-	</div>
+<form name="editUserForm" class="form-horizontal" novalidate>
 
 	<!-- Login -->
 	<div class="control-group">
 		<label class="control-label" for="inputLogin">Login</label>
 		<div class="controls">
-			<input type="text" id="inputLogin" placeholder="Login" ng-model="user.login" />
+			<input type="number" id="inputLogin" name="login" placeholder="Login" ng-model="user.login" required />
+            <div class="error" ng-show="editUserForm.login.$dirty && editUserForm.login.$invalid">
+                <span ng-show="editUserForm.login.$error.number">Only numbers please</span>
+            </div>
 		</div>
 	</div>
 	
@@ -18,8 +19,7 @@
 	<div class="control-group">
 		<label class="control-label" for="inputPassword">Mot de passe</label>
 		<div class="controls">
-			<input type="password" id="inputPassword" placeholder="Password"
-				ng-model="user.password" />
+			<input type="password" id="inputPassword" placeholder="Password" ng-model="user.password" required />
 		</div>
 	</div>
 	
@@ -27,8 +27,7 @@
 	<div class="control-group">
 		<label class="control-label" for="inputFirstName">Prénom</label>
 		<div class="controls">
-			<input type="text" id="inputFirstName" placeholder="Prénom"
-				ng-model="user.firstName" />
+			<input type="text" id="inputFirstName" placeholder="Prénom" ng-model="user.firstName" required />
 		</div>
 	</div>
 	
@@ -36,8 +35,7 @@
 	<div class="control-group">
 		<label class="control-label" for="inputLastName">Nom</label>
 		<div class="controls">
-			<input type="text" id="inputLastName" placeholder="Nom"
-				ng-model="user.lastName" />
+			<input type="text" id="inputLastName" placeholder="Nom" ng-model="user.lastName" required />
 		</div>
 	</div>
 	
@@ -52,9 +50,8 @@
 	
 	<div class="control-group">
 		<div class="controls">
-			<input type="submit" class="btn btn-primary" value="Enregistrer"
-				ng-click="saveUser()" />
-				<a href="#/admin/users" class="btn" style="margin-left:10px;">Retour</a>
+			<input type="submit" class="btn btn-primary" value="Enregistrer" ng-click="editUserForm.$invalid || saveUser()" />
+            <a href="#/admin/users" class="btn" style="margin-left:10px;">Retour</a>
 		</div>
 	</div>
 </form>
