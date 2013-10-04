@@ -1,14 +1,12 @@
-<span ng-if="comptes.length == 0">
+<div ng-if="comptes.length == 0" style="margin:24px 0 0 40px;">
 	Encore aucun compte chez nous ?... <i class="fam-emoticon-unhappy"></i>
-</span>
+</div>
+
+<div ng-include src="'views/notifications.html'"></div>
 
 <div ng-if="comptes.length > 0">
 
-<h2>Comptes</h2>
-
-	<div class="alert alert-success animate-show" ng-show="isNotBlank()">
-		<span class="fam-accept"></span>{{validationMsg}}
-	</div>
+    <h2>Comptes</h2>
 
 	<table class="table table-striped">
 		<thead>

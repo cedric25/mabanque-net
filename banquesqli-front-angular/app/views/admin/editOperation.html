@@ -1,16 +1,14 @@
 <h2>Détail d'une opération</h2>
 
-<form class="form-horizontal">
+<div ng-include src="'views/notifications.html'"></div>
 
-	<div class="alert alert-success animate-show" ng-show="validationMsg != ''">
-		<span class="fam-accept"></span>{{validationMsg}}
-	</div>
+<form class="form-horizontal">
 
 	<!-- Motif -->
 	<div class="control-group">
 		<label class="control-label" for="inputMotif">Motif</label>
 		<div class="controls">
-			<input type="text" id="inputMotif" placeholder="Motif" ng-model="operation.reason" />
+			<input type="text" id="inputMotif" placeholder="Motif" ng-model="operation.reason" focus-me />
 		</div>
 	</div>
 	
@@ -20,7 +18,7 @@
 		<div class="controls">
 			<div class="input-append">
 				<input type="text" id="inputAmount" placeholder="Montant"
-					ng-model="operation.amount" class="amount" />
+                       ng-model="operation.amount" class="amount" disabled />
 				<span class="add-on">€</span>
 			</div>
 		</div>
@@ -31,7 +29,7 @@
 		<label class="control-label" for="inputAccountNumber">Numéro de compte</label>
 		<div class="controls">
 			<input type="text" id="inputAccountNumber" placeholder="Numéro de compte"
-				ng-model="operation.accountNumber" />
+				ng-model="operation.accountNumber" disabled />
 		</div>
 	</div>
 	

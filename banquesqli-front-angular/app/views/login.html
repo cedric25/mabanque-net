@@ -1,25 +1,18 @@
-<div class="alert alert-success" ng-show="message != ''">
-    {{message}}
-</div>
-
-<div class="alert alert-error animate-show" ng-show="error != ''"
-		style="max-width:309px; margin:0 auto 20px;">
-	<i class="fam-emoticon-unhappy"></i> {{error}}
-</div>
+<div ng-include src="'views/notifications.html'"></div>
 
 <!-- novalidate is used to disable browser's native form validation -->
 <form name="loginForm" class="form-signin" novalidate>
 
-  <h2 class="form-signin-heading">Connexion</h2>
+    <h2 class="form-signin-heading">Connexion</h2>
 
-  <!-- Login -->
-  <input type="text" class="input-block-level" placeholder="Login" ng-model="user.login" required>
+    <!-- Login -->
+    <input type="text" class="input-block-level" placeholder="Login" ng-model="user.login" required>
 
-  <!-- Mot de passe -->
-  <input type="password" class="input-block-level" placeholder="Password" ng-model="user.password" required>
+    <!-- Mot de passe -->
+    <input type="password" class="input-block-level" placeholder="Password" ng-model="user.password" required>
 
-  <div style="text-align:center;">
-  	<button class="btn btn-primary" ng-click="!loginForm.$valid || doLogin()">Go !</button>
-  </div>
+    <div style="text-align:center;">
+        <button class="btn btn-primary" ng-click="!loginForm.$valid || doLogin()">Go !</button>
+    </div>
 
 </form>

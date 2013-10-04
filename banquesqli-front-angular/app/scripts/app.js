@@ -3,10 +3,10 @@
 /**
  * Configuration de l'application
  */
-angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
+angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap'])
 
-  // Ensemble des routes
-  .config(function ($routeProvider, $httpProvider) {
+// Ensemble des routes
+.config(function ($routeProvider, $httpProvider) {
     
     $routeProvider
       .when('/', {
@@ -31,7 +31,7 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
         templateUrl: 'views/admin/users.html',
         controller: 'AdminUsersCtrl'
       })
-			.when('/admin/user/:login', {
+      .when('/admin/user/:login', {
         templateUrl: 'views/admin/editUser.html',
         controller: 'AdminEditUserCtrl'
       })
@@ -69,14 +69,18 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate'])
       
     // A chaque changement de route
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
-        
-      // Redirection vers la page de login si l'utilisateur n'est pas authentifié
-      // et qu'il essaye d'accéder à une page autre que la page de login
-      if (!$rootScope.isLogged() && next.templateUrl != 'views/login.html') {
-        $location.path('/login');
-      }
-        
-      // Remise à vide des notifications
-      Notifications.clear();
+
+        // Redirection vers la page de login si l'utilisateur n'est pas authentifié
+        // et qu'il essaye d'accéder à une page autre que la page de login
+        if (!$rootScope.isLogged() && next.templateUrl != 'views/login.html') {
+            $location.path('/login');
+        }
+
+        // Remise à vide des notifications
+        if (!Notifications.isKeepMessage()) {
+            Notifications.clear();
+        } else {
+            Notifications.setKeepMessage(false);
+        }
     });
   });

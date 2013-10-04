@@ -5,7 +5,7 @@
  * (Intercepteur enregistré dans app.js)
  */
 angular.module('banquesqliAngular01App')
-	.factory('CheckAuthWithinResponseInterceptor', function ($rootScope, FrontSession, $q, $location) {
+	.factory('CheckAuthWithinResponseInterceptor', function ($rootScope, Notifications, $q, $location) {
 	  return {
 	  		'response': function (response) {
 	          if (typeof response !== 'undefined'
@@ -14,8 +14,8 @@ angular.module('banquesqliAngular01App')
                 && response.data.authenticated === false) {
               // Redirection vers la page de login
               $rootScope.clearUser();
+              Notifications.setRedMessage('La session a expiré, veuillez vous reconnecter.', true);
               $rootScope.redirectToLogin();
-              FrontSession.setMessageForLoginForm('La session a expiré, veuillez vous reconnecter.');
             }
             return response || $q.when(response);
 	      }

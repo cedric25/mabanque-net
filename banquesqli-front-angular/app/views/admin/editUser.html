@@ -5,21 +5,25 @@
 <form name="editUserForm" class="form-horizontal" novalidate>
 
 	<!-- Login -->
-	<div class="control-group">
-		<label class="control-label" for="inputLogin">Login</label>
-		<div class="controls">
-			<input type="number" id="inputLogin" name="login" placeholder="Login" ng-model="user.login" required />
-            <div class="error" ng-show="editUserForm.login.$dirty && editUserForm.login.$invalid">
-                <span ng-show="editUserForm.login.$error.number">Only numbers please</span>
+    <div class="control-group">
+        <label class="control-label" for="inputLogin">Login</label>
+        <div class="controls">
+            <input type="text" id="inputLogin" name="login" placeholder="Login" ng-model="user.login" required only-digits focus-me />
+            <div ng-show="(editUserForm.login.$dirty || submitted) && editUserForm.login.$invalid" class="error">
+                <span ng-show="editUserForm.login.$error.required">Champ obligatoire</span>
+                <span ng-show="editUserForm.login.$error.onlyDigits">Uniquement des chiffres</span>
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 	
 	<!-- Mot de passe -->
 	<div class="control-group">
 		<label class="control-label" for="inputPassword">Mot de passe</label>
 		<div class="controls">
-			<input type="password" id="inputPassword" placeholder="Password" ng-model="user.password" required />
+			<input type="password" id="inputPassword" name="password" placeholder="Password" ng-model="user.password" required />
+            <div ng-show="(editUserForm.password.$dirty || submitted) && editUserForm.password.$invalid" class="error">
+                <span ng-show="editUserForm.password.$error.required">Champ obligatoire</span>
+            </div>
 		</div>
 	</div>
 	
@@ -27,7 +31,10 @@
 	<div class="control-group">
 		<label class="control-label" for="inputFirstName">Prénom</label>
 		<div class="controls">
-			<input type="text" id="inputFirstName" placeholder="Prénom" ng-model="user.firstName" required />
+			<input type="text" id="inputFirstName" name="firstName" placeholder="Prénom" ng-model="user.firstName" required />
+            <div ng-show="(editUserForm.firstName.$dirty || submitted) && editUserForm.firstName.$invalid" class="error">
+                <span ng-show="editUserForm.firstName.$error.required">Champ obligatoire</span>
+            </div>
 		</div>
 	</div>
 	
@@ -35,7 +42,10 @@
 	<div class="control-group">
 		<label class="control-label" for="inputLastName">Nom</label>
 		<div class="controls">
-			<input type="text" id="inputLastName" placeholder="Nom" ng-model="user.lastName" required />
+			<input type="text" id="inputLastName" name="lastName" placeholder="Nom" ng-model="user.lastName" required />
+            <div ng-show="(editUserForm.lastName.$dirty || submitted) && editUserForm.lastName.$invalid" class="error">
+                <span ng-show="editUserForm.lastName.$error.required">Champ obligatoire</span>
+            </div>
 		</div>
 	</div>
 	
@@ -43,14 +53,13 @@
 	<div class="control-group">
 		<label class="control-label" for="inputAdmin">Admin ?</label>
 		<div class="controls">
-			<input type="checkbox" id="inputAdmin" ng-model="user.admin"
-				ng-checked="user.admin" />
+            <input type="checkbox" id="inputAdmin" ng-model="user.admin" ng-checked="user.admin" />
 		</div>
 	</div>
 	
 	<div class="control-group">
 		<div class="controls">
-			<input type="submit" class="btn btn-primary" value="Enregistrer" ng-click="editUserForm.$invalid || saveUser()" />
+			<input type="submit" class="btn btn-primary" value="Enregistrer" ng-click="submitted = true; editUserForm.$invalid || saveUser()" />
             <a href="#/admin/users" class="btn" style="margin-left:10px;">Retour</a>
 		</div>
 	</div>

@@ -36,7 +36,7 @@
 		<div class="row-fluid">
 
 			<!-- Menu de gauche -->
-			<div class="span3">
+			<div class="span3" ng-show="isLogged()">
 				<div ng-include src="'views/menu-left.html'"></div>
 			</div>
 
@@ -83,6 +83,7 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -94,6 +95,10 @@
     <script src="scripts/services/tokenHandler.js"></script>
     <script src="scripts/services/sessionStorageHandler.js"></script>
     <script src="scripts/services/notifications.js"></script>
+    
+    <script src="scripts/directives/onlyNumbers.js"></script>
+    <script src="scripts/directives/amount.js"></script>
+    <script src="scripts/directives/focus.js"></script>
 
     <script src="scripts/interceptors/addTokenToRequestInterceptor.js"></script>
     <script src="scripts/interceptors/checkAuthWithinResponseInterceptor.js"></script>
@@ -111,6 +116,8 @@
     <script src="scripts/controllers/admin/operations.js"></script>
     <script src="scripts/controllers/admin/editOperation.js"></script>
     <!-- endbuild -->
+    
+    <script src="scripts/utils.js"></script>
 
     <script src="scripts/angular-locale_fr-fr.js"></script>
 

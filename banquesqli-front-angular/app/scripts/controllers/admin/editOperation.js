@@ -5,12 +5,11 @@
  * Contrôleur associé à la modification d'une opération
  */
 angular.module('banquesqliAngular01App')
-  .controller('AdminEditOperationCtrl', function ($scope, $routeParams, Operations, FrontSession) {
+  .controller('AdminEditOperationCtrl', function ($scope, $routeParams, Operations, FrontSession, Notifications) {
 
-  	var idOperation = $routeParams.id; // dans l'URl
   	$scope.operation = FrontSession.getOperation(); // Dans le service partagé
-		
-		$scope.validationMsg = '';
+    // Si F5 ??
+    // Stocker aussi en session...
 		
 		/** saveOperation() */
 		$scope.saveOperation = function() {
@@ -21,7 +20,9 @@ angular.module('banquesqliAngular01App')
 				accountNumber: $scope.operation.accountNumber
 			});
 
-			operation.$update({'id': $scope.operation._id}, function() { $scope.validationMsg = 'Opération sauvegardée'; });
+			operation.$update({'id': $scope.operation._id}, function() {
+        Notifications.setGreenMessage('Opération sauvegardée');
+      });
 		};
 
   });
