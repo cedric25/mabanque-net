@@ -7,8 +7,7 @@
  * Dans ce cas, le message "survivra" après le premier changement de route
  * Ex: Création d'un user, message d'info et redirection vers la liste : le message doit "survivre" à la redirection
  */
-angular.module('banquesqliAngular01App')
-    .service('Notifications', function () {
+app.service('Notifications', function () {
 
     // private
     var greenMessage = '';

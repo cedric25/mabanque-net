@@ -1,47 +1,21 @@
 'use strict';
 
 /**
- * Ressources partagées de disponibles dans chaque contrôleur
+ * Ressources partagées disponibles dans chaque contrôleur
  */
-angular.module('banquesqliAngular01App')
-    .service('FrontSession', function () {
+app.service('FrontSession', function () {
 
-        // private
-        var operation = {};
-        var messageForLoginForm = '';
-        var messageToConsume = '';
+    // private
+    var operation = {};
 
-        // public
-        return {
-
-            'getOperation': function () {
-                return operation;
-            },
-            'setOperation': function(value) {
-                operation = value;
-            },
-            
-            'getMessageForLoginForm': function () {
-                return messageForLoginForm;
-            },
-            'setMessageForLoginForm': function(value) {
-                messageForLoginForm = value;
-            },
-
-            'messageToConsume': function() {
-                return messageToConsume !== '';
-            },
-            'getMessageToConsume': function () {
-                var msg = messageToConsume;
-                this.clearMessageToConsume();
-                return msg;
-            },
-            'setMessageToConsume': function(value) {
-                messageToConsume = value;
-            },
-            'clearMessageToConsume': function() {
-                messageToConsume = '';
-            }
+    // public
+    return {
+        'getOperation': function () {
+            return operation;
+        },
+        'setOperation': function(value) {
+            operation = value;
         }
+    }
 
-    });
+});

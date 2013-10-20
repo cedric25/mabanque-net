@@ -3,8 +3,7 @@
 /**
  * Contrôleur associé à la page de détail des opérations d'un compte
  */
-angular.module('banquesqliAngular01App')
-  .controller('AccountDetailCtrl', function ($scope, $routeParams, AccountsNumber, OperationsAccount) {
+app.controller('AccountDetailCtrl', function ($scope, $routeParams, AccountsNumber, OperationsAccount) {
 
   	var accountNumber = $routeParams.number;
 

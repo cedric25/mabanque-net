@@ -4,8 +4,7 @@
  * Administration
  * Contrôleur associé à la liste des utilisateurs
  */
-angular.module('banquesqliAngular01App')
-  .controller('AdminUsersCtrl', function ($scope, $rootScope, Users, Notifications) {
+app.controller('AdminUsersCtrl', function ($scope, $rootScope, Users, Notifications) {
 
   	$scope.validationMsg = '';
 

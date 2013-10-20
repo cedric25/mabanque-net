@@ -6,13 +6,27 @@
     <h2 class="form-signin-heading">Connexion</h2>
 
     <!-- Login -->
-    <input type="text" class="input-block-level" placeholder="Login" ng-model="user.login" required>
-
+    <div class="control-group">
+        <div class="controls">
+            <input type="text" class="input-block-level" placeholder="Login" ng-model="user.login" name="login" required />
+            <div ng-show="(loginForm.login.$dirty || submitted) && loginForm.login.$invalid" class="error">
+                <span ng-show="loginForm.login.$error.required">Champ obligatoire</span>
+            </div>
+        </div>
+    </div>
+    
     <!-- Mot de passe -->
-    <input type="password" class="input-block-level" placeholder="Password" ng-model="user.password" required>
+    <div class="control-group">
+        <div class="controls">
+            <input type="password" class="input-block-level" placeholder="Password" ng-model="user.password" name="password" required />
+            <div ng-show="(loginForm.password.$dirty || submitted) && loginForm.password.$invalid" class="error">
+                <span ng-show="loginForm.password.$error.required">Champ obligatoire</span>
+            </div>
+        </div>
+    </div>
 
     <div style="text-align:center;">
-        <button class="btn btn-primary" ng-click="!loginForm.$valid || doLogin()">Go !</button>
+        <button class="btn btn-primary" ng-click="submitted = true; loginForm.$invalid || doLogin()">Go !</button>
     </div>
 
 </form>

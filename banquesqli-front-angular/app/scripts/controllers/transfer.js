@@ -3,15 +3,13 @@
 /**
  * Contrôleur associé à la page de virement
  */
-angular.module('banquesqliAngular01App')
-
-.controller('TransferCtrl',
+app.controller('TransferCtrl',
   	function ($scope, $rootScope, AccountsUser, Operations, Accounts, AccountsNumber, Notifications, $q, $filter) {
 
   	// Données du formulaire
   	$scope.fromAccount = '';
   	$scope.toAccount = '';
-  	$scope.amount = 0;
+  	$scope.amount = '';
   	$scope.comment = '';
 
   	/**
@@ -43,7 +41,7 @@ angular.module('banquesqliAngular01App')
   	        }
   	    });
 
-  	    $scope.amount = 0;
+  	    $scope.amount = '';
   	    $scope.comment = '';
   	};
 

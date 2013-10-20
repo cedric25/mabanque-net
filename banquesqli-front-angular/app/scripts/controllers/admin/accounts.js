@@ -4,9 +4,7 @@
  * Administration
  * Contrôleur associé à la liste des comptes
  */
-angular.module('banquesqliAngular01App')
-
-.controller('AdminAccountsCtrl', function ($scope, $rootScope, Accounts) {
+app.controller('AdminAccountsCtrl', function ($scope, $rootScope, Accounts) {
 
     $scope.validationMsg = '';
 

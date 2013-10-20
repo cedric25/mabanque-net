@@ -3,11 +3,15 @@
 /**
  * Configuration de l'application
  */
-angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap'])
+var app = angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate', 'ui.bootstrap']);
 
-// Ensemble des routes
-.config(function ($routeProvider, $httpProvider) {
+app.constant('constants', {
+    CONTEXTPATH: 'http://localhost:3000/'
+});
+
+app.config(function ($routeProvider, $httpProvider) {
     
+    // Ensemble des routes
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
@@ -25,7 +29,7 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate', 
         templateUrl: 'views/accountDetail.html',
         controller: 'AccountDetailCtrl'
       })
-
+    
       // Admin
       .when('/admin/users', {
         templateUrl: 'views/admin/users.html',
@@ -51,21 +55,21 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate', 
         templateUrl: 'views/admin/editOperation.html',
         controller: 'AdminEditOperationCtrl'
       })
-
+    
       // Default
       .otherwise({
         redirectTo: '/'
       });
-
+    
       // Ajout du token de sécurité à toutes les requêtes sortantes
       $httpProvider.interceptors.push('AddTokenToRequestInterceptor');
-
+    
       // Vérification de la réponse des requêtes entrantes,
       // redirection vers la page de login si le serveur renvoie 'authenticated' = false
       $httpProvider.interceptors.push('CheckAuthWithinResponseInterceptor');
-  })
+});
 
-  .run(function ($rootScope, $location, Notifications) {
+app.run(function ($rootScope, $location, Notifications) {
       
     // A chaque changement de route
     $rootScope.$on('$routeChangeStart', function (event, next, current) {
@@ -83,4 +87,4 @@ angular.module('banquesqliAngular01App', ['ngRoute', 'ngResource', 'ngAnimate', 
             Notifications.setKeepMessage(false);
         }
     });
-  });
+});

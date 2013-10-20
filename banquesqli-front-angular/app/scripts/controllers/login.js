@@ -3,16 +3,13 @@
 /**
  * Contrôleur associé à la page de login
  */
-angular.module('banquesqliAngular01App')
-    .controller('LoginCtrl', function ($scope, $rootScope, Login, $location, FrontSession, Users, Notifications) {
+app.controller('LoginCtrl', function ($scope, $rootScope, Login, $location, Notifications) {
 
     // Données du formulaire
     $scope.user = {
         login: '1234',
         password: 'password'
     };
-
-    $scope.error = FrontSession.getMessageForLoginForm();
 
     $scope.doLogin = function () {
         var loginResponse = Login.login(

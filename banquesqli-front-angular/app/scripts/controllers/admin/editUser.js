@@ -4,9 +4,7 @@
  * Administration
  * Contrôleur associé à la création ou à la modification d'un utilisateur
  */
-angular.module('banquesqliAngular01App')
-
-.controller('AdminEditUserCtrl', function ($scope, $routeParams, $location, UserLogin, Users, Notifications) {
+app.controller('AdminEditUserCtrl', function ($scope, $routeParams, $location, UserLogin, Users, Notifications) {
 
     var userLogin = $routeParams.login;
 

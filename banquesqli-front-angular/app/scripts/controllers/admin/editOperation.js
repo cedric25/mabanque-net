@@ -4,8 +4,7 @@
  * Administration
  * Contrôleur associé à la modification d'une opération
  */
-angular.module('banquesqliAngular01App')
-  .controller('AdminEditOperationCtrl', function ($scope, $routeParams, Operations, FrontSession, Notifications) {
+app.controller('AdminEditOperationCtrl', function ($scope, $routeParams, Operations, FrontSession, Notifications) {
 
   	$scope.operation = FrontSession.getOperation(); // Dans le service partagé
     // Si F5 ??

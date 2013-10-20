@@ -4,8 +4,7 @@
  * Administration
  * Contrôleur associé à la liste des opérations
  */
-angular.module('banquesqliAngular01App')
-  .controller('AdminOperationsCtrl', function ($scope, $location, Operations, FrontSession) {
+app.controller('AdminOperationsCtrl', function ($scope, $location, Operations, FrontSession) {
 
   	$scope.operations = Operations.query(
       {},

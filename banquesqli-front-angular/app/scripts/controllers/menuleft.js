@@ -3,9 +3,7 @@
 /**
  * Contrôleur associé au menu de gauche
  */
-angular.module('banquesqliAngular01App')
-
-.controller('MenuLeftController', function ($scope, $rootScope, AccountsUser, $location) {
+app.controller('MenuLeftController', function ($scope, $rootScope, AccountsUser, $location) {
     
     $scope.comptes = [];
     

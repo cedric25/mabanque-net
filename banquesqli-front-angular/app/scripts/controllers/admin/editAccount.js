@@ -4,9 +4,7 @@
  * Administration
  * Contrôleur associé à la création ou à la modification d'un compte
  */
-angular.module('banquesqliAngular01App')
-
-.controller('AdminEditAccountCtrl', function ($scope, $rootScope, $routeParams, Accounts, AccountsNumber, Users, Notifications, $location) {
+app.controller('AdminEditAccountCtrl', function ($scope, $rootScope, $routeParams, Accounts, AccountsNumber, Users, Notifications, $location) {
     
     var accountNumber = $routeParams.number;
 

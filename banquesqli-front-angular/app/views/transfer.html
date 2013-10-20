@@ -27,10 +27,12 @@
     <label class="control-label" for="montant">Montant</label>
     <div class="controls">
     	<div class="input-append">
-      	<input type="number" id="montant" class="amount" ng-model="amount" name="amount" min="1" style="width: 179px;">
+      	<input type="text" id="montant" class="amount" ng-model="amount" name="amount" style="width: 179px;" required amount-greater-than-zero />
       	<span class="add-on">€</span>
-        <div class="error" ng-show="transferForm.amount.$dirty && transferForm.amount.$error.min">
-            <span ng-show="transferForm.amount.$error.min">Le montant doit être supérieur à 0</span>
+        <div class="error" ng-show="(transferForm.amount.$dirty || submitted) && transferForm.amount.$invalid">
+            <span ng-show="transferForm.amount.$error.required">Champ obligatoire</span>
+            <span ng-show="transferForm.amount.$error.amount">Montant invalide</span>
+            <span ng-show="transferForm.amount.$error.amountGreaterThanZero">Le montant doit être strictement positif</span>
         </div>
       </div>
     </div>
@@ -40,14 +42,14 @@
   <div class="control-group">
     <label class="control-label" for="motif">Motif</label>
     <div class="controls">
-      <input type="text" id="motif" ng-model="comment">
+      <input type="text" id="motif" ng-model="comment" />
     </div>
   </div>
 
   <!-- Submit -->
   <div class="control-group">
     <div class="controls">
-      <input type="submit" value="Valider" class="btn btn-primary" ng-click="transferForm.$invalid || doTransfer()" />
+      <input type="submit" value="Valider" class="btn btn-primary" ng-click="submitted = true; transferForm.$invalid || doTransfer()" />
     </div>
   </div>
 

@@ -4,10 +4,8 @@
  * Contrôleur parent de tous les autres contrôleurs.
  * Toutes ces méthodes sont accessibles depuis les autres contrôleurs.
  */
-angular.module('banquesqliAngular01App')
-
-  .controller('RootController',
-  function ($scope, $rootScope, UserLogin, $location, AccountsUser, TokenHandler, SessionStorageHandler, Notifications) {
+app.controller('RootController',
+  function ($scope, $rootScope, UserLogin, $location, TokenHandler, SessionStorageHandler, Notifications) {
       
     /* METHODES UTILITAIRES */
 
@@ -99,7 +97,10 @@ angular.module('banquesqliAngular01App')
         }
     };
     
-    // Envoi d'un message, à destination du contrôleur du menu de gauche qui est prévu pour le traiter
+    /*
+     * Rechargement du menu de gauche
+     * Envoi d'un message, à destination du contrôleur du menu de gauche qui est prévu pour le traiter
+     */
     $rootScope.reloadLeftMenu = function() {
         $rootScope.$broadcast('reloadLeftMenu');
     };

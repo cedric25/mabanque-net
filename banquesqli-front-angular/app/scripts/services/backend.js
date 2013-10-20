@@ -8,59 +8,51 @@
 var port = 3000;
 var host = 'http://localhost::port';
 
-angular.module('banquesqliAngular01App')
+// Default actions:
+/* -------------------------
+{   'get':    {method:'GET'},
+    'save':   {method:'POST'},
+    'query':  {method:'GET', isArray:true},
+    'remove': {method:'DELETE'},
+    'delete': {method:'DELETE'} };
+ * ------------------------- */
 
-	// Default actions:
-	/* -------------------------
-	{ 'get':    {method:'GET'},
-		'save':   {method:'POST'},
-		'query':  {method:'GET', isArray:true},
-		'remove': {method:'DELETE'},
-		'delete': {method:'DELETE'} };
-	 * ------------------------- */
-
-  .factory('Login', function($resource) {
+app.factory('Login', function($resource) {
     return $resource(host + '/login',
-    	{ port: port },
-    	{ 'login': {  method: 'POST' } });
-  })
+        { port: port },
+        { 'login': {  method: 'POST' } });
+})
 
-	.factory('Users', function($resource, TokenHandler) {
+app.factory('Users', function($resource) {
     return $resource(host + '/users/:id',
-      { port: port, id: '@id' },
-      { update: { method: 'PUT' } }
-    );
-  })
-  .factory('UserLogin', function($resource, TokenHandler) {
+        { port: port, id: '@id' },
+        { update: { method: 'PUT' } });
+})
+app.factory('UserLogin', function($resource) {
     return $resource(host + '/users/login/:login',
-    	{ port: port, login: 'login' });
-  })
+        { port: port, login: 'login' });
+})
 
-  .factory('Accounts', function($resource, TokenHandler) {
+app.factory('Accounts', function($resource) {
     return $resource(host + '/accounts/:id',
       { port: port, id: '@id' },
-      { update: { method: 'PUT' } }
-    );
-  })
-  .factory('AccountsUser', function($resource, TokenHandler, $http, $rootScope, FrontSession) {
+      { update: { method: 'PUT' } });
+})
+app.factory('AccountsUser', function($resource) {
     return $resource(host + '/accounts/user/:login',
-      { port: port, login: 'login' }
-    );
-  })
-  .factory('AccountsNumber', function($resource, TokenHandler) {
+      { port: port, login: 'login' });
+})
+app.factory('AccountsNumber', function($resource) {
     return $resource(host + '/accounts/number/:number',
-      { port: port, number: 'number' }
-    );
-  })
+      { port: port, number: 'number' });
+})
 	
-	.factory('Operations', function($resource, TokenHandler) {
+app.factory('Operations', function($resource) {
     return $resource(host + '/operations/:id',
       { port: port, id: '@id' },
-      { update: { method: 'PUT' } }
-    );
-	})
-	.factory('OperationsAccount', function($resource, TokenHandler) {
+      { update: { method: 'PUT' } });
+})
+app.factory('OperationsAccount', function($resource) {
     return $resource(host + '/operations/account/:number',
-      { port: port, number: 'number' }
-    );
-	});
+      { port: port, number: 'number' });
+});
