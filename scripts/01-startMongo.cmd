@@ -1,2 +1,3 @@
 @echo off
-mongod --dbpath "<dbpath>"
+cd <chemin vers le répertoire bin/ de l'installation MongoDB>
+mongod --dbpath "<répertoire des données MongoDB>"
