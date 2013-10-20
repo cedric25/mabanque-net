@@ -53,4 +53,9 @@ var AccountModel = mongoose.model('Account', Account);
 var OperationModel = mongoose.model('Operation', Operation);
 var TokenModel = mongoose.model('Token', Token);
 
+// MongoDB en local
 mongoose.connect('mongodb://localhost/bank');
+
+// MongoDB sur mongolab
+// Devient instable au bout d'un certain nombre de requêtes, sans doute dû aux limitations de la version gratuite...
+//mongoose.connect('mongodb://bank:bank@ds051658.mongolab.com:51658/bank');
