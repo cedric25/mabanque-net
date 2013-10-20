@@ -20,6 +20,7 @@ Le repo comprend :
 ### Installer Git
 
 Git est un outil de versionning. Il nous sera utile pour récupérer les sources du projet.
+
 http://git-scm.com/
 
 Sinon, vous pouvez télécharger les sources au format ZIP.
@@ -31,6 +32,7 @@ Sinon, vous pouvez télécharger les sources au format ZIP.
 ### Installer Node.js
 
 Node.js est un framework JS utile pour les applications serveurs. Il embarque l'outil 'npm' (Node Package Manager) qui nous sera utile pour récupérer certains modules.
+
 http://nodejs.org/
 
 ### Installer MongoDB
@@ -41,7 +43,9 @@ http://www.mongodb.org/downloads
 ### Répertoire des données Mongo
 
 Créer un répertoire vide que Mongo utilisera pour stocker ses données.
+
 Dans le répertoire scripts/ du projet, modifier '01-startMongo.cmd' pour pointer vers le répertoire créé.
+
 Et mettre à jour le chemin vers le répertoire bin/ de l'installation MongoDB (Ou ajouter le répertoire bin/ au path de la machine).
 
 ### Restaurer les collections (= les tables)
