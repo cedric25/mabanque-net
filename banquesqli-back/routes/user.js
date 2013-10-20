@@ -212,7 +212,7 @@ exports.update = function(req, res) {
                 user.lastName = req.body.lastName;
             }
 
-            if(req.body.admin) {
+            if(typeof req.body.admin !== 'undefined') {
                 user.admin = req.body.admin;
             }
 
