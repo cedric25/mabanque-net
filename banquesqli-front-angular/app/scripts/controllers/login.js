@@ -13,25 +13,24 @@ app.controller('LoginCtrl', function ($scope, $rootScope, Login, $location, Noti
 
     $scope.doLogin = function () {
         var loginResponse = Login.login(
-        // Data
-        {
-            login: $scope.user.login,
-            password: $scope.user.password
-        },
-        // Success
-        function (value, responseHeaders) {
-            if (value.authenticated) {
-                $rootScope.setLoggedUser(value);
-                redirectToHome();
-            } else {
-               Notifications.setRedMessage('Login ou mot de passe incorrect');
-            }
-        },
-        // Error
-
-        function (httpResponse) {
-            Notifications.setRedMessage('Erreur réseau');
-        });
+            // Data
+            {
+                login: $scope.user.login,
+                password: $scope.user.password
+            },
+            // Success
+            function (value, responseHeaders) {
+                if (value.authenticated) {
+                    $rootScope.setLoggedUser(value);
+                    redirectToHome();
+                } else {
+                   Notifications.setRedMessage('Login ou mot de passe incorrect');
+                }
+            },
+            // Error
+            function (httpResponse) {
+                Notifications.setRedMessage('Erreur réseau');
+            });
     };
 
     var redirectToHome = function () {

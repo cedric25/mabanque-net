@@ -8,7 +8,9 @@
     <div class="control-group">
         <label class="control-label" for="inputLogin">Login</label>
         <div class="controls">
+            
             <input type="text" id="inputLogin" name="login" placeholder="Login" ng-model="user.login" required only-digits focus-me />
+            
             <div ng-show="(editUserForm.login.$dirty || submitted) && editUserForm.login.$invalid" class="error">
                 <span ng-show="editUserForm.login.$error.required">Champ obligatoire</span>
                 <span ng-show="editUserForm.login.$error.onlyDigits">Uniquement des chiffres</span>

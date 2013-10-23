@@ -14,7 +14,6 @@ app.controller('AdminUsersCtrl', function ($scope, $rootScope, Users, Notificati
         
         // Un utilisateur ne peut pas se supprimer lui-même
         if (user.login == $rootScope.getLogin()) {
-            //alert('Vous ne pouvez pas vous supprimer.');
             Notifications.setRedMessage('Vous ne pouvez pas vous supprimer.');
         }
         else {
@@ -22,8 +21,7 @@ app.controller('AdminUsersCtrl', function ($scope, $rootScope, Users, Notificati
                 {'id': user._id},
                 function (data) {
                     // Message de confirmation
-                    $scope.validationMsg =
-                        'L\'utilisateur "' + user.firstName + ' ' + user.lastName + '" a été supprimé.';
+                    Notifications.setGreenMessage('L\'utilisateur "' + user.firstName + ' ' + user.lastName + '" a été supprimé.');
                     // Rechargement de la liste
                     $scope.users = Users.query();
                 });

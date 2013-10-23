@@ -26,8 +26,10 @@
   <div class="control-group">
     <label class="control-label" for="montant">Montant</label>
     <div class="controls">
-    	<div class="input-append">
+      <div class="input-append">
+          
       	<input type="text" id="montant" class="amount" ng-model="amount" name="amount" style="width: 179px;" required amount-greater-than-zero />
+          
       	<span class="add-on">€</span>
         <div class="error" ng-show="(transferForm.amount.$dirty || submitted) && transferForm.amount.$invalid">
             <span ng-show="transferForm.amount.$error.required">Champ obligatoire</span>
