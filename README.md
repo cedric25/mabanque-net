@@ -35,6 +35,18 @@ Node.js est un framework JS utile pour écrire des applications serveurs. Il emb
 
 http://nodejs.org/
 
+### Installer Ruby
+
+(Nécessaire pour le projet Backbone.js, mais pas pour le projet AngularJS)
+
+Sous Windows : http://rubyinstaller.org/downloads/  
+Sinon : https://www.ruby-lang.org/fr/downloads/
+
+Bien rajouter le répertoire /bin de l'installation de Ruby au PATH de la machine.  
+(Vérfier dans la console avec la commande ruby --version)
+
+Ruby permettra de traduire les feuilles de style Sass de bootstrap en CSS standard.
+
 ### Installer MongoDB
 
 MongoDB est une base de données NoSQL.
