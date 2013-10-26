@@ -4,7 +4,7 @@
  * Administration
  * Contrôleur associé à la liste des comptes
  */
-app.controller('AdminAccountsCtrl', function ($scope, $rootScope, Accounts) {
+app.controller('AdminAccountsCtrl', function ($scope, $rootScope, Accounts, Notifications) {
 
     $scope.validationMsg = '';
 
@@ -16,7 +16,7 @@ app.controller('AdminAccountsCtrl', function ($scope, $rootScope, Accounts) {
             'id': account._id
         }, function (data) {
             // Message d'information
-            $scope.validationMsg = 'Le compte "' + account.name + '" a été supprimé.';
+            Notifications.setGreenMessage('Le compte "' + account.name + '" a été supprimé.', false);
             
             // Rechargement de la liste des comptes
             $scope.accounts = Accounts.query();
