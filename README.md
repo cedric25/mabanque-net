@@ -3,9 +3,9 @@
 MaBanque.net - Gestion de comptes bancaires
 
 Le repo comprend :
-* Un serveur en node.js qui dialogue avec un MongoDB (développé par Matthis Duclos)
-* Un front en Backbone.js (développé par Matthis Duclos)
-* Un front en AngularJS
+* Une application serveur écrite en node.js qui dialogue avec un MongoDB (développé par [Matthis Duclos](/matthis-d))
+* Un exemple de front en Backbone.js (développé par [Matthis Duclos](/matthis-d))
+* Un exemple de front en AngularJS
 
 ## Fonctionnalités
 
@@ -31,7 +31,7 @@ Sinon, vous pouvez télécharger les sources au format ZIP.
 
 ### Installer Node.js
 
-Node.js est un framework JS utile pour les applications serveurs. Il embarque l'outil 'npm' (Node Package Manager) qui nous sera utile pour récupérer certains modules.
+Node.js est un framework JS utile pour écrire des applications serveurs. Il embarque l'outil 'npm' (Node Package Manager) qui nous sera utile pour récupérer certains modules.
 
 http://nodejs.org/
 
@@ -53,6 +53,8 @@ Et mettre à jour le chemin vers le répertoire bin/ de l'installation MongoDB (
 
 Les fichiers de données à restaurer se trouvent dans banquesqli-back/dump/bank
 
+Se placer dans banquesqli-back/dump/bank et exéctuer :
+
     mongorestore --dbpath <répertoires des données Mongo> --db bank --collection accounts "accounts.bson"
     
     mongorestore --dbpath <répertoires des données Mongo> --db bank --collection operations "operations.bson"
@@ -67,7 +69,7 @@ Au démarrage, deux utilisateurs sont définis :
 
 ### Installer bower (via npm)
 
-Bower est un gestionnaire de paquet pour une application front-end. Il nous permettra de récupérer facilement les librairies JS nécessaires.
+Bower est un gestionnaire de paquets pour une application front-end. Il nous permettra de récupérer facilement les librairies JS nécessaires.
 
     npm install -g bower
 
@@ -77,25 +79,23 @@ Grunt est un outil de build. Il nous permettra entre autre de simuler un serveur
 
     npm install -g grunt-cli
     
-### Partie serveur - banquesqli-back/
+### Application côté serveur - banquesqli-back/
 
-Récupérer les modules utiles à l'application serveur :
-
-    npm install
-
-La commande npm récupère dans un repository en ligne les modules listés dans le fichier package.json et les stocke dans le répertoire node_modules/
-
-### Front backbone - banquesqli-front-backbone/
+Se positionner dans banquesqli-back/ et exécuter :
 
     npm install
-    bower install
 
-La commande bower récupère dans un repository en ligne les librairies listées dans le fichier bower.json et les stocke dans le répertoire app/bower_components/
+La commande 'npm install' récupère dans un repository en ligne les modules listés dans le fichier package.json et les stocke dans le répertoire node_modules/
 
-### Front angular - banquesqli-front-angular/
+### Applications côté client - banquesqli-front-backbone/ et banquesqli-front-angular/
+
+Les 2 applications sont indépendantes, chacune fonctionne très bien sans l'autre.  
+Se positionner dans banquesqli-front-backbone/ ou banquesqli-front-angular/ et exécuter :
 
     npm install
     bower install
+
+La commande 'bower install' récupère dans un repository en ligne les librairies listées dans le fichier bower.json et les stocke dans le répertoire app/bower_components/
 
 ## Démarrage (Windows)
 
