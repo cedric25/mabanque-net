@@ -3,8 +3,8 @@
 MaBanque.net - Gestion de comptes bancaires
 
 Le repo comprend :
-* Une application serveur écrite en node.js qui dialogue avec un MongoDB (développé par [Matthis Duclos](/matthis-d))
-* Un exemple de front en Backbone.js (développé par [Matthis Duclos](/matthis-d))
+* Une application serveur écrite en node.js qui dialogue avec un MongoDB (développé par [Matthis Duclos](https://github.com/matthis-d))
+* Un exemple de front en Backbone.js (développé par [Matthis Duclos](https://github.com/matthis-d))
 * Un exemple de front en AngularJS
 
 ## Fonctionnalités
