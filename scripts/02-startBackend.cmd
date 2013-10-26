@@ -1,3 +1,2 @@
 @echo off
-cd ../banquesqli-back
-node app
+cmd /k "node ../banquesqli-back/app"
